@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceder - StarTech Cafe</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Volver al Menú</a>
+        <div class="auth-card">
+            <div class="auth-logo">
+                <i class="fa-solid fa-mug-saucer auth-logo-icon"></i>
+                <h2>StarTech Cafe</h2>
+                <p>Ingresa para disfrutar de tus bebidas favoritas</p>
+            </div>
+            <div class="auth-tabs">
+                <button id="tab-login" class="auth-tab active">Iniciar Sesión</button>
+                <button id="tab-register" class="auth-tab">Registrarse</button>
+            </div>
+            <form id="form-login" class="auth-form">
+                <div class="form-group">
+                    <label for="login-email"><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
+                    <input type="email" id="login-email" required placeholder="correo@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password"><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    <input type="password" id="login-password" required placeholder="••••••••">
+                </div>
+                <div class="demo-tip">
+                    <p><strong>Cuentas Demo:</strong></p>
+                    <ul>
+                        <li><strong>Cliente:</strong> cliente@starbucks.com / 123456</li>
+                        <li><strong>Admin:</strong> admin@starbucks.com / admin123</li>
+                    </ul>
+                </div>
+                <button type="submit" class="btn-primary w-100">Ingresar</button>
+            </form>
+            <form id="form-register" class="auth-form d-none">
+                <div class="form-group">
+                    <label for="reg-name"><i class="fa-solid fa-user"></i> Nombre Completo</label>
+                    <input type="text" id="reg-name" placeholder="Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email"><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
+                    <input type="email" id="reg-email" placeholder="correo@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="reg-password"><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres">
+                </div>
+                <div class="form-group">
+                    <label for="reg-role"><i class="fa-solid fa-users-gear"></i> Rol</label>
+                    <select id="reg-role" class="form-select">
+                        <option value="cliente">Cliente</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary w-100">Crear Cuenta</button>
+            </form>
+            <div id="auth-alert" class="alert-box d-none"></div>
+        </div>
+    </div>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

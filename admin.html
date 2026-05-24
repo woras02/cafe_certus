@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - StarTech Cafe</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-mug-saucer"></i></span>
+                <span class="logo-text">StarTech Cafe - Admin</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Menú</a>
+                <a href="admin.html" class="nav-link active">Panel Admin</a>
+            </nav>
+            <div class="user-cart-actions">
+                <div id="user-info" class="user-info"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="admin-dashboard container">
+        <h2 class="section-title"><i class="fa-solid fa-chart-simple"></i> Dashboard de Ventas</h2>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fa-solid fa-dollar-sign stat-icon"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Ingresos Totales</span>
+                    <span id="stat-total-ingresos" class="stat-value">S/. 0.00</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-receipt stat-icon"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Pedidos Totales</span>
+                    <span id="stat-total-pedidos" class="stat-value">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-calculator stat-icon"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Ticket Promedio</span>
+                    <span id="stat-ticket-promedio" class="stat-value">S/. 0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-filters">
+            <div class="form-group">
+                <label for="filter-fecha">Filtrar por Fecha:</label>
+                <select id="filter-fecha" class="form-select">
+                    <option value="todas">Todas</option>
+                    <option value="hoy">Hoy</option>
+                    <option value="semana">Esta Semana</option>
+                    <option value="mes">Este Mes</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="admin-grid">
+            <div class="admin-card">
+                <h3 class="card-title">Top 3 Productos Más Vendidos</h3>
+                <ul id="top-productos" class="top-list">
+                    <li class="top-item placeholder">No hay datos aún</li>
+                </ul>
+            </div>
+            <div class="admin-card full-width">
+                <h3 class="card-title">Historial de Pedidos</h3>
+                <table class="admin-table" id="tabla-pedidos">
+                    <thead>
+                        <tr>
+                            <th># Orden</th>
+                            <th>Cliente</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-pedidos-body">
+                        <tr><td colspan="6" class="text-center">No hay pedidos registrados</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 StarTech Cafe - Panel Administrativo</p>
+        </div>
+    </footer>
+
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

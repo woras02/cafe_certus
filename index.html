@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarTech Cafe - Café y Momentos Únicos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-mug-saucer"></i></span>
+                <span class="logo-text">StarTech Cafe</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link active">Menú</a>
+                <a href="#" id="btn-historial" class="nav-link">Mis Pedidos</a>
+                <a href="admin.html" id="link-admin" class="nav-link d-none">Panel Admin</a>
+            </nav>
+            <div class="user-cart-actions">
+                <div id="user-info" class="user-info">
+                    <a href="login.html" class="btn-login"><i class="fa-solid fa-user"></i> Iniciar Sesión</a>
+                </div>
+                <button id="cart-toggle" class="cart-btn">
+                    <i class="fa-solid fa-shopping-bag"></i>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Siente el aroma de cada momento</h1>
+            <p>Personaliza tus bebidas favoritas como a ti te gusta.</p>
+            <a href="#menu-section" class="btn-primary">Ver Menú Ahora</a>
+        </div>
+        <div class="hero-image">
+            <div class="hero-circle"></div>
+        </div>
+    </section>
+
+    <section id="menu-section" class="menu-section container">
+        <h2 class="section-title">Elige tus favoritos</h2>
+        <div class="categories-container">
+            <button class="category-btn active" data-category="todos">Todos</button>
+            <button class="category-btn" data-category="bebidas-calientes">Bebidas Calientes</button>
+            <button class="category-btn" data-category="bebidas-frias">Bebidas Frías</button>
+            <button class="category-btn" data-category="reposteria">Repostería</button>
+        </div>
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="product-search" placeholder="Buscar tu café favorito...">
+        </div>
+        <div id="products-grid" class="products-grid">
+            <div class="loader">Cargando menú...</div>
+        </div>
+    </section>
+
+    <div id="customize-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal-btn" id="close-customize"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body-layout">
+                <div class="modal-product-preview">
+                    <div id="modal-product-img-container" class="product-img-large">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h3 id="modal-product-name">Café</h3>
+                    <p id="modal-product-desc">Descripción del café premium.</p>
+                    <div class="price-display">
+                        <span class="price-label">Precio Total:</span>
+                        <span id="modal-calculated-price" class="price-val">S/. 0.00</span>
+                    </div>
+                </div>
+                <div class="modal-customizer-options">
+                    <form id="customizer-form">
+                        <input type="hidden" id="modal-product-id">
+                        <div class="custom-group">
+                            <h4 class="group-title">1. Elige el Tamaño</h4>
+                            <div class="options-row">
+                                <label class="option-card">
+                                    <input type="radio" name="size" value="alto" checked data-add-price="0">
+                                    <div class="option-card-content">
+                                        <i class="fa-solid fa-cup-straw"></i>
+                                        <span>Alto</span>
+                                        <small>Base</small>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="size" value="grande" data-add-price="2.00">
+                                    <div class="option-card-content">
+                                        <i class="fa-solid fa-cup-straw"></i>
+                                        <span>Grande</span>
+                                        <small>+S/.2.00</small>
+                                    </div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="size" value="venti" data-add-price="3.50">
+                                    <div class="option-card-content">
+                                        <i class="fa-solid fa-cup-straw"></i>
+                                        <span>Venti</span>
+                                        <small>+S/.3.50</small>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="custom-group">
+                            <h4 class="group-title">2. Elige la Leche</h4>
+                            <div class="options-select-container">
+                                <select name="milk" id="select-milk" class="form-select">
+                                    <option value="entera" data-add-price="0">Leche Entera</option>
+                                    <option value="deslactosada" data-add-price="1.00">Leche Deslactosada (+S/.1.00)</option>
+                                    <option value="almendra" data-add-price="2.50">Leche de Almendra (+S/.2.50)</option>
+                                    <option value="sin-leche" data-add-price="0">Sin Leche (Café Negro)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="custom-group">
+                            <h4 class="group-title">3. Adicionales</h4>
+                            <div class="checkboxes-grid">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="toppings" value="crema-batida" data-add-price="1.50">
+                                    <span class="checkbox-custom"></span>
+                                    <span>Crema Batida (+S/.1.50)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="toppings" value="jarabe-caramelo" data-add-price="1.50">
+                                    <span class="checkbox-custom"></span>
+                                    <span>Jarabe Caramelo (+S/.1.50)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="toppings" value="chispas" data-add-price="1.00">
+                                    <span class="checkbox-custom"></span>
+                                    <span>Chispas Chocolate (+S/.1.00)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" id="btn-add-to-cart-confirm" class="btn-primary w-100">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al Carrito
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-sidebar-header">
+            <h3><i class="fa-solid fa-shopping-bag"></i> Tu Carrito</h3>
+            <button id="close-cart" class="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="cart-items-container" class="cart-items-container">
+            <div class="empty-cart-msg">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <p>Tu carrito está vacío.</p>
+                <a href="#menu-section" class="btn-secondary btn-sm" id="btn-start-shopping">Elegir un Café</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-totals">
+                <span>Subtotal:</span>
+                <span id="cart-total-val">S/. 0.00</span>
+            </div>
+            <button id="btn-checkout" class="btn-primary w-100" disabled>Confirmar Pedido</button>
+        </div>
+    </div>
+
+    <div id="orders-modal" class="modal">
+        <div class="modal-content max-width-600">
+            <button class="close-modal-btn" id="close-orders"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="modal-title"><i class="fa-solid fa-clock-rotate-left"></i> Mis Pedidos</h3>
+            <div id="orders-list" class="orders-list"></div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 StarTech Cafe - Proyecto Académico</p>
+        </div>
+    </footer>
+
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
